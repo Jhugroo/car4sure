@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vehicle
+{% endblock %}
+
+{% block body %}
+	<h1>Vehicle</h1>
+
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ vehicle.id }}</td>
+			</tr>
+			<tr>
+				<th>Year</th>
+				<td>{{ vehicle.year }}</td>
+			</tr>
+			<tr>
+				<th>Make</th>
+				<td>{{ vehicle.make }}</td>
+			</tr>
+			<tr>
+				<th>Model</th>
+				<td>{{ vehicle.model }}</td>
+			</tr>
+			<tr>
+				<th>Vin</th>
+				<td>{{ vehicle.vin }}</td>
+			</tr>
+			<tr>
+				<th>UsageVehicle</th>
+				<td>{{ vehicle.usageVehicle }}</td>
+			</tr>
+			<tr>
+				<th>PrimaryUse</th>
+				<td>{{ vehicle.primaryUse }}</td>
+			</tr>
+			<tr>
+				<th>AnnualMileage</th>
+				<td>{{ vehicle.annualMileage }}</td>
+			</tr>
+			<tr>
+				<th>Ownership</th>
+				<td>{{ vehicle.ownership }}</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<a href="{{ path('app_vehicle_index') }}">
+		<button class="btn btn-secondary">back to list</button>
+	</a>
+
+	<a href="{{ path('app_vehicle_edit', {'id': vehicle.id}) }}">
+		<button class="btn btn-primary">
+			edit
+		</button>
+	</a>
+
+	{{ include('vehicle/_delete_form.html.twig') }}
+{% endblock %}

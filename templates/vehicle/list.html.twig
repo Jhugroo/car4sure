@@ -1,0 +1,51 @@
+<h2>Vehicles</h2>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Year</th>
+			<th>Make</th>
+			<th>Model</th>
+			<th>Vin</th>
+			<th>UsageVehicle</th>
+			<th>PrimaryUse</th>
+			<th>AnnualMileage</th>
+			<th>Ownership</th>
+			<th>actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for vehicle in vehicles %}
+			<tr>
+				<td>{{ vehicle.id }}</td>
+				<td>{{ vehicle.year }}</td>
+				<td>{{ vehicle.make }}</td>
+				<td>{{ vehicle.model }}</td>
+				<td>{{ vehicle.vin }}</td>
+				<td>{{ vehicle.usageVehicle }}</td>
+				<td>{{ vehicle.primaryUse }}</td>
+				<td>{{ vehicle.annualMileage }}</td>
+				<td>{{ vehicle.ownership }}</td>
+				<td>
+					<a href="{{ path('app_vehicle_show', {'id': vehicle.id}) }}">
+						<button class="btn btn-secondary">
+							show</button>
+					</a>
+					<a href="{{ path('app_vehicle_edit', {'id': vehicle.id}) }}">
+						<button class="btn btn-primary">
+							edit
+						</button>
+					</a>
+				</td>
+			</tr>
+		{% else %}
+			<tr>
+				<td colspan="10">no records found</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+<a href="{{ path('app_vehicle_new') }}">
+	<button class="btn btn-primary">Create new Vehicle</button>
+</a>

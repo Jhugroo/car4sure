@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PolicyHolder index
+{% endblock %}
+
+{% block body %}
+	<h1>PolicyHolder index</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>FirstName</th>
+				<th>LastName</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for policy_holder in policy_holders %}
+				<tr>
+					<td>{{ policy_holder.id }}</td>
+					<td>{{ policy_holder.firstName }}</td>
+					<td>{{ policy_holder.lastName }}</td>
+					<td>
+						<a href="{{ path('app_policy_holder_show', {'id': policy_holder.id}) }}">
+							<button class="btn btn-secondary">
+								show</button>
+						</a>
+						<a href="{{ path('app_policy_holder_edit', {'id': policy_holder.id}) }}">
+							<button class="btn btn-primary">
+								edit
+							</button>
+						</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="4">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a href="{{ path('app_policy_holder_new') }}">
+		<button class="btn btn-primary">Create new</button>
+	</a>
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Policy index
+{% endblock %}
+
+{% block body %}
+	{{include('policy/list.html.twig',{'policies': policies})}}
+{% endblock %}

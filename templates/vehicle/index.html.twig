@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vehicle index
+{% endblock %}
+
+{% block body %}
+
+	{{include('vehicle/list.html.twig',{'vehicles': vehicles})}}
+{% endblock %}

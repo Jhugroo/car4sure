@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit PolicyHolder
+{% endblock %}
+
+{% block body %}
+	<h1>Edit PolicyHolder</h1>
+
+	{{ include('policy_holder/_form.html.twig', {'button_label': 'Update'}) }}
+
+	<a href="{{ path('app_policy_holder_index') }}">
+		<button class="btn btn-secondary">back to list</button>
+	</a>
+
+	{{ include('policy_holder/_delete_form.html.twig') }}
+{% endblock %}

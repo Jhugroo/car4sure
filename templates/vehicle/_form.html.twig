@@ -1,0 +1,43 @@
+{{ form_start(form) }}
+{{ form_row(form.year) }}
+{{ form_row(form.make) }}
+{{ form_row(form.model) }}
+{{ form_row(form.vin) }}
+{{ form_row(form.usageVehicle) }}
+{{ form_row(form.primaryUse) }}
+{{ form_row(form.annualMileage) }}
+{{ form_row(form.ownership) }}
+<h3>{{form_label(form.garagingAddress)}}</h3>
+{{ form_widget(form.garagingAddress) }}
+<h3>{{form_label(form.coverages)}}</h3>
+<div {{ stimulus_controller('form-collection') }} data-form-collection-index-value="{{ form.coverages|length > 0 ? form.coverages|last.vars.name + 1 : 0 }}" data-form-collection-prototype-value="{{ form_widget(form.coverages.vars.prototype)|e('html_attr') }}">
+	<ul {{ stimulus_target('form-collection', 'collectionContainer') }}></ul>
+	<button type="btn btn-success" {{ stimulus_action('form-collection', 'addCollectionElement') }}>Add a coverage</button>
+</div>
+<br/>
+<h4>
+	Coverages added
+</h4>
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">Type</th>
+			<th scope="col">Limit</th>
+			<th scope="col">Deductible</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for coverage in  form.coverages %}
+			<tr>
+				<th scope="row">
+					{{ form_widget(coverage.type) }}</th>
+				<td>{{ form_widget(coverage.limitCoverage) }}</td>
+				<td>
+					{{ form_widget(coverage.deductible) }}</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+<button class="btn btn-info">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

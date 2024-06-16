@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+	<div class="container-fluid">
+		<a class="navbar-brand" href={{path('app_index')}}>Home</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+				<li class="nav-item">
+					<a class="nav-link" href={{path('app_policy_index')}}>Policy</a>
+				</li>
+				<li>
+					<a class="nav-link" href={{path('app_driver_index')}}>Drivers</a>
+				</li>
+				<li>
+					<a class="nav-link" href={{path('app_vehicle_index')}}>Vehicles</a>
+				</li>
+
+			</ul>
+			<form class="d-flex" role="search">
+				{% if app.user %}
+					<a href={{path('app_logout')}}>
+						<button class="btn btn-danger">logout</button>
+					</a>
+				{% else %}
+
+					<a href={{path('app_register')}}>
+						<button class="btn btn-success">Register</button>
+					</a>
+					<a href={{path('app_login')}}>
+						<button class="btn btn-info">login</button>
+					</a>
+				{% endif %}
+
+
+			</form>
+		</div>
+	</div>
+</nav>

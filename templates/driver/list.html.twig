@@ -1,0 +1,49 @@
+<h2>Drivers</h2>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>FirstName</th>
+			<th>LastName</th>
+			<th>Age</th>
+			<th>LicenseNumber</th>
+			<th>LicenseState</th>
+			<th>LicenseEffectiveDate</th>
+			<th>LicenseExpirationDate</th>
+			<th>LicenseClass</th>
+			<th>actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for driver in drivers %}
+			<tr>
+				<td>{{ driver.id }}</td>
+				<td>{{ driver.firstName }}</td>
+				<td>{{ driver.lastName }}</td>
+				<td>{{ driver.age }}</td>
+				<td>{{ driver.licenseNumber }}</td>
+				<td>{{ driver.licenseState }}</td>
+				<td>{{ driver.licenseEffectiveDate ? driver.licenseEffectiveDate|date('Y-m-d') : '' }}</td>
+				<td>{{ driver.licenseExpirationDate ? driver.licenseExpirationDate|date('Y-m-d') : '' }}</td>
+				<td>{{ driver.licenseClass }}</td>
+				<td>
+					<a href="{{ path('app_driver_show', {'id': driver.id}) }}">
+						<button class="btn btn-secondary">show</button>
+					</a>
+					<a href="{{ path('app_driver_edit', {'id': driver.id}) }}">
+						<button class="btn btn-primary">
+							edit
+						</button>
+					</a>
+				</td>
+			</tr>
+		{% else %}
+			<tr>
+				<td colspan="10">no records found</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
+<a href="{{ path('app_driver_new') }}">
+	<button class="btn btn-primary">Create new Driver</button>
+</a>

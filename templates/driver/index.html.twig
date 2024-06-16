@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Driver index
+{% endblock %}
+
+{% block body %}
+
+
+	{{include('driver/list.html.twig',{'drivers': drivers})}}
+
+{% endblock %}

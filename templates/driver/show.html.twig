@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Driver
+{% endblock %}
+
+{% block body %}
+	<h1>Driver</h1>
+
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ driver.id }}</td>
+			</tr>
+			<tr>
+				<th>FirstName</th>
+				<td>{{ driver.firstName }}</td>
+			</tr>
+			<tr>
+				<th>LastName</th>
+				<td>{{ driver.lastName }}</td>
+			</tr>
+			<tr>
+				<th>Age</th>
+				<td>{{ driver.age }}</td>
+			</tr>
+			<tr>
+				<th>LicenseNumber</th>
+				<td>{{ driver.licenseNumber }}</td>
+			</tr>
+			<tr>
+				<th>LicenseState</th>
+				<td>{{ driver.licenseState }}</td>
+			</tr>
+			<tr>
+				<th>LicenseEffectiveDate</th>
+				<td>{{ driver.licenseEffectiveDate ? driver.licenseEffectiveDate|date('Y-m-d') : '' }}</td>
+			</tr>
+			<tr>
+				<th>LicenseExpirationDate</th>
+				<td>{{ driver.licenseExpirationDate ? driver.licenseExpirationDate|date('Y-m-d') : '' }}</td>
+			</tr>
+			<tr>
+				<th>LicenseClass</th>
+				<td>{{ driver.licenseClass }}</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<a href="{{ path('app_driver_index') }}">
+		<button class="btn btn-secondary">back to list</button>
+	</a>
+
+	<a href="{{ path('app_driver_edit', {'id': driver.id}) }}">
+		<button class="btn btn-primary">
+			edit
+		</button>
+	</a>
+
+	{{ include('driver/_delete_form.html.twig') }}
+{% endblock %}

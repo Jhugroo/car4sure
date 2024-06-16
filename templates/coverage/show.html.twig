@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Coverage
+{% endblock %}
+
+{% block body %}
+	<h1>Coverage</h1>
+
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ coverage.id }}</td>
+			</tr>
+			<tr>
+				<th>Type</th>
+				<td>{{ coverage.type }}</td>
+			</tr>
+			<tr>
+				<th>LimitCoverage</th>
+				<td>{{ coverage.limitCoverage }}</td>
+			</tr>
+			<tr>
+				<th>Deductible</th>
+				<td>{{ coverage.deductible }}</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<a href="{{ path('app_coverage_index') }}">
+		<button class="btn btn-secondary">back to list</button>
+	</a>
+
+	<a href="{{ path('app_coverage_edit', {'id': coverage.id}) }}">
+		<button class="btn btn-primary">
+			edit
+		</button>
+	</a>
+
+	{{ include('coverage/_delete_form.html.twig') }}
+{% endblock %}

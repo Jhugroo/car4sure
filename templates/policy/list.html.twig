@@ -1,0 +1,46 @@
+<h2>Policies</h2>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>PolicyNo</th>
+			<th>PolicyStatus</th>
+			<th>PolicyType</th>
+			<th>PolicyEffectiveDate</th>
+			<th>PolicyExpirationDate</th>
+			<th>actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for policy in policies %}
+			<tr>
+				<td>{{ policy.id }}</td>
+				<td>{{ policy.policyNo }}</td>
+				<td>{{ policy.policyStatus }}</td>
+				<td>{{ policy.policyType }}</td>
+				<td>{{ policy.policyEffectiveDate ? policy.policyEffectiveDate|date('Y-m-d') : '' }}</td>
+				<td>{{ policy.policyExpirationDate ? policy.policyExpirationDate|date('Y-m-d') : '' }}</td>
+				<td>
+					<a href="{{ path('app_policy_show', {'id': policy.id}) }}">
+						<button class="btn btn-secondary">
+							show</button>
+					</a>
+					<a href="{{ path('app_policy_edit', {'id': policy.id}) }}">
+						<button class="btn btn-primary">
+							edit
+						</button>
+					</a>
+				</td>
+			</tr>
+		{% else %}
+			<tr>
+				<td colspan="7">no records found</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+<a href="{{ path('app_policy_new') }}">
+	<button class="btn btn-primary">Create new Policy</button>
+</a>
